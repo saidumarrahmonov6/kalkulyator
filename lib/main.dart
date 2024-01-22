@@ -47,7 +47,10 @@ class _MyAppState extends State<MyApp> {
                   textAlign: TextAlign.right,
                   keyboardType: TextInputType.none,
                   controller: number,
+                  maxLines: null,
+                  textAlignVertical: TextAlignVertical.bottom,
                   style: TextStyle(
+                    height: 1,
                     fontSize: 40,
                   ),
                   decoration: InputDecoration(
@@ -80,7 +83,8 @@ class _MyAppState extends State<MyApp> {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10),
                   children: [
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: 'AC',
                       voidCallback: () {
                         setState(() {
@@ -91,7 +95,8 @@ class _MyAppState extends State<MyApp> {
                         calculate(number.text);
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: 'X',
                       voidCallback: () {
                         setState(() {
@@ -107,16 +112,26 @@ class _MyAppState extends State<MyApp> {
                         calculate(number.text);
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: '%',
                       voidCallback: () {
-                        add("%");
+                        if(number.text.endsWith("%") || number.text.isEmpty){
+                          print("oldinroq chiqarilgan");
+                        } else {
+                          add("%");
+                        }
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: '/',
                       voidCallback: () {
-                        add("/");
+                        if(number.text.endsWith("/") || number.text.isEmpty){
+                          print("oldinroq chiqarilgan");
+                        } else {
+                          add("/");
+                        }
                       },
                     ),
                     Button(
@@ -137,10 +152,15 @@ class _MyAppState extends State<MyApp> {
                         add("9");
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: '*',
                       voidCallback: () {
-                        add("*");
+                        if(number.text.endsWith("*") || number.text.isEmpty){
+                          print("oldinroq chiqarilgan");
+                        } else {
+                          add("*");
+                        }
                       },
                     ),
                     Button(
@@ -161,10 +181,15 @@ class _MyAppState extends State<MyApp> {
                         add("6");
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: '-',
                       voidCallback: () {
-                        add("-");
+                        if(number.text.endsWith("-") || number.text.isEmpty){
+                          print("oldinroq chiqarilgan");
+                        } else {
+                          add("-");
+                        }
                       },
                     ),
                     Button(
@@ -185,13 +210,19 @@ class _MyAppState extends State<MyApp> {
                         add("3");
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: '+',
                       voidCallback: () {
-                        add("+");
+                        if(number.text.endsWith("+") || number.text.isEmpty){
+                          print("oldinroq chiqarilgan");
+                        } else {
+                          add("+");
+                        }
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: '( )',
                       voidCallback: () {
                         testq++;
@@ -208,13 +239,19 @@ class _MyAppState extends State<MyApp> {
                         add("0");
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: ',',
                       voidCallback: () {
-                        add(",");
+                        if(number.text.endsWith(".") || number.text.isEmpty){
+                          print("oldinroq chiqarilgan");
+                        } else {
+                          add(".");
+                        }
                       },
                     ),
-                    Main_Button(
+                    Button(
+                      color: Colors.deepOrange[400],
                       character: '=',
                       voidCallback: () {
                         setState(() {
@@ -254,7 +291,7 @@ class _MyAppState extends State<MyApp> {
       if(number.text.length == 0){
         result = "0";
       } else {
-        result = "ERROR";
+        result = "";
       }
     }
   }
