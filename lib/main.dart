@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kalkulyator/custom_button.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,6 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String expermission = "";
   int testq = 0;
+  String result="";
   TextEditingController number = TextEditingController();
 
   @override
@@ -56,6 +58,19 @@ class _MyAppState extends State<MyApp> {
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
               )),
+              Container(
+                alignment: Alignment.bottomRight,
+                child: Text(
+                  result,
+                  style: TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
+                height: 60,
+                width: MediaQuery.of(context).size.width - 10,
+                decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(10)),
+              ),
               GridView(
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -71,6 +86,7 @@ class _MyAppState extends State<MyApp> {
                           expermission = "";
                           testq=0;
                         });
+                        calculate(number.text);
                       },
                     ),
                     Button(
@@ -86,6 +102,7 @@ class _MyAppState extends State<MyApp> {
                           number = TextEditingController(text: number.text.substring(0,number.text.length-1));
                           expermission = number.text.substring(0,number.text.length-1);
                         });
+                        calculate(number.text);
                       },
                     ),
                     Button(
@@ -99,8 +116,6 @@ class _MyAppState extends State<MyApp> {
                       voidCallback: () {
                         add("/");
                       },
-
-
                     ),
                     Button(
                       character: '7',
@@ -199,7 +214,15 @@ class _MyAppState extends State<MyApp> {
                     ),
                     Button(
                       character: '=',
-                      voidCallback: () {},
+                      voidCallback: () {
+                        setState(() {
+                          number = TextEditingController(text: "");
+                          expermission = "";
+                          number = TextEditingController(text: result);
+                          expermission = result;
+                        });
+
+                      },
                     ),
                   ]),
             ],
@@ -213,6 +236,24 @@ class _MyAppState extends State<MyApp> {
       expermission += exp;
       number = TextEditingController(text: expermission);
     });
+    calculate(number.text);
+  }
+  calculate(String mathExp){
+    try {
+      setState(() {
+        ContextModel cm = ContextModel();
+        Parser parser = Parser();
+        Expression exp = parser.parse(mathExp);
+        double eval = exp.evaluate(EvaluationType.REAL, cm);
+        result = eval.toString();
+      });
+    } catch(e){
+      if(number.text.length == 0){
+        result = "0";
+      } else {
+        result = "ERROR";
+      }
+    }
   }
 
 }
