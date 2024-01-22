@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kalkulyator/custom_button.dart';
 import 'package:math_expressions/math_expressions.dart';
 
+import 'main_button.dart';
+
 void main() {
   runApp(MaterialApp(
     home: MyApp(),
@@ -78,7 +80,7 @@ class _MyAppState extends State<MyApp> {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10),
                   children: [
-                    Button(
+                    Main_Button(
                       character: 'AC',
                       voidCallback: () {
                         setState(() {
@@ -89,7 +91,7 @@ class _MyAppState extends State<MyApp> {
                         calculate(number.text);
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: 'X',
                       voidCallback: () {
                         setState(() {
@@ -105,13 +107,13 @@ class _MyAppState extends State<MyApp> {
                         calculate(number.text);
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: '%',
                       voidCallback: () {
                         add("%");
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: '/',
                       voidCallback: () {
                         add("/");
@@ -135,7 +137,7 @@ class _MyAppState extends State<MyApp> {
                         add("9");
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: '*',
                       voidCallback: () {
                         add("*");
@@ -159,7 +161,7 @@ class _MyAppState extends State<MyApp> {
                         add("6");
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: '-',
                       voidCallback: () {
                         add("-");
@@ -183,13 +185,13 @@ class _MyAppState extends State<MyApp> {
                         add("3");
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: '+',
                       voidCallback: () {
                         add("+");
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: '( )',
                       voidCallback: () {
                         testq++;
@@ -206,13 +208,13 @@ class _MyAppState extends State<MyApp> {
                         add("0");
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: ',',
                       voidCallback: () {
                         add(",");
                       },
                     ),
-                    Button(
+                    Main_Button(
                       character: '=',
                       voidCallback: () {
                         setState(() {
@@ -220,6 +222,7 @@ class _MyAppState extends State<MyApp> {
                           expermission = "";
                           number = TextEditingController(text: result);
                           expermission = result;
+                          result = "";
                         });
 
                       },
