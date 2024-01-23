@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kalkulyator/custom_button.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-import 'main_button.dart';
-
 void main() {
   runApp(MaterialApp(
     home: MyApp(),
@@ -32,6 +30,10 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        title: Text("Calculate"),
+      ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(10),
@@ -91,6 +93,7 @@ class _MyAppState extends State<MyApp> {
                           number = TextEditingController(text: '');
                           expermission = "";
                           testq=0;
+                          result = "";
                         });
                         calculate(number.text);
                       },
@@ -106,6 +109,7 @@ class _MyAppState extends State<MyApp> {
                               number = TextEditingController(text: "");
                             });
                           }
+                          calculate(number.text);
                           number = TextEditingController(text: number.text.substring(0,number.text.length-1));
                           expermission = number.text.substring(0,number.text.length-1);
                         });
@@ -116,7 +120,7 @@ class _MyAppState extends State<MyApp> {
                       color: Colors.deepOrange[400],
                       character: '%',
                       voidCallback: () {
-                        if(number.text.endsWith("%") || number.text.isEmpty){
+                        if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
                           print("oldinroq chiqarilgan");
                         } else {
                           add("%");
@@ -127,7 +131,7 @@ class _MyAppState extends State<MyApp> {
                       color: Colors.deepOrange[400],
                       character: '/',
                       voidCallback: () {
-                        if(number.text.endsWith("/") || number.text.isEmpty){
+                        if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
                           print("oldinroq chiqarilgan");
                         } else {
                           add("/");
@@ -156,7 +160,7 @@ class _MyAppState extends State<MyApp> {
                       color: Colors.deepOrange[400],
                       character: '*',
                       voidCallback: () {
-                        if(number.text.endsWith("*") || number.text.isEmpty){
+                        if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
                           print("oldinroq chiqarilgan");
                         } else {
                           add("*");
@@ -185,7 +189,7 @@ class _MyAppState extends State<MyApp> {
                       color: Colors.deepOrange[400],
                       character: '-',
                       voidCallback: () {
-                        if(number.text.endsWith("-") || number.text.isEmpty){
+                        if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
                           print("oldinroq chiqarilgan");
                         } else {
                           add("-");
@@ -214,7 +218,7 @@ class _MyAppState extends State<MyApp> {
                       color: Colors.deepOrange[400],
                       character: '+',
                       voidCallback: () {
-                        if(number.text.endsWith("+") || number.text.isEmpty){
+                        if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
                           print("oldinroq chiqarilgan");
                         } else {
                           add("+");
@@ -228,7 +232,7 @@ class _MyAppState extends State<MyApp> {
                         testq++;
                         if(testq%2==1){
                           add("(");
-                        } else { 
+                        } else {
                           add(")");
                         }
                       },
@@ -243,7 +247,7 @@ class _MyAppState extends State<MyApp> {
                       color: Colors.deepOrange[400],
                       character: ',',
                       voidCallback: () {
-                        if(number.text.endsWith(".") || number.text.isEmpty){
+                        if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
                           print("oldinroq chiqarilgan");
                         } else {
                           add(".");

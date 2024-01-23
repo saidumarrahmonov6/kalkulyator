@@ -22,6 +22,6 @@ class Button extends StatelessWidget {
         height: 100,
         child: Text(character, style: TextStyle(fontSize: 30,),
       ),
-    );
+    ));
   }
 }
