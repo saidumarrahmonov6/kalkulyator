@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kalkulyator/custom_button.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: MyApp(),
-    debugShowCheckedModeBanner: false,
+  runApp(ScreenUtilInit(
+    designSize: const Size(360 , 690),
+      builder: (_, child) {
+        return MaterialApp(
+          home: MyApp(),
+          debugShowCheckedModeBanner: false,
+        );
+      }
   ));
 }
 
@@ -60,7 +66,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   cursorColor: Colors.white,
                 ),
-                height: 100,
+                height: 100.h,
                 width: MediaQuery.of(context).size.width - 10,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
@@ -73,7 +79,7 @@ class _MyAppState extends State<MyApp> {
                     fontSize: 40,
                   ),
                 ),
-                height: 60,
+                height: 60.h,
                 width: MediaQuery.of(context).size.width - 10,
                 decoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(10)),
