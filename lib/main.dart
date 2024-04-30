@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kalkulyator/custom_button.dart';
@@ -36,14 +37,10 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title: Text("Calculate"),
-      ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(10),
-          color: Colors.black54,
+          color: Color(0xff1b1a28),
           child: Column(
             children: [
               Expanded(
@@ -60,6 +57,7 @@ class _MyAppState extends State<MyApp> {
                   style: TextStyle(
                     height: 1,
                     fontSize: 40,
+                    color: Colors.white
                   ),
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -73,17 +71,34 @@ class _MyAppState extends State<MyApp> {
               )),
               Container(
                 alignment: Alignment.bottomRight,
-                child: Text(
-                  result,
-                  style: TextStyle(
-                    fontSize: 40,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("=",
+                      style: TextStyle(
+                    fontSize: 60,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                ),),
+                    Expanded(
+                      child: Text(
+                        textAlign: TextAlign.end,
+                        result,
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 height: 60.h,
                 width: MediaQuery.of(context).size.width - 10,
                 decoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(10)),
               ),
+              SizedBox(height: 20,),
               GridView(
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -92,7 +107,7 @@ class _MyAppState extends State<MyApp> {
                       crossAxisSpacing: 10),
                   children: [
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: 'AC',
                       voidCallback: () {
                         setState(() {
@@ -105,7 +120,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: 'X',
                       voidCallback: () {
                         setState(() {
@@ -123,7 +138,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: '%',
                       voidCallback: () {
                         if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
@@ -134,7 +149,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: '/',
                       voidCallback: () {
                         if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
@@ -163,7 +178,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: '*',
                       voidCallback: () {
                         if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
@@ -192,7 +207,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: '-',
                       voidCallback: () {
                         if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
@@ -221,7 +236,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: '+',
                       voidCallback: () {
                         if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
@@ -232,7 +247,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: '( )',
                       voidCallback: () {
                         testq++;
@@ -250,7 +265,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: ',',
                       voidCallback: () {
                         if(number.text.endsWith(".") ||number.text.endsWith("*") ||number.text.endsWith("-")|| number.text.endsWith("+") || number.text.endsWith("%") || number.text.endsWith("/") || number.text.isEmpty){
@@ -261,7 +276,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                     Button(
-                      color: Colors.deepOrange[400],
+                      color: Color(0xff54c9dd),
                       character: '=',
                       voidCallback: () {
                         setState(() {

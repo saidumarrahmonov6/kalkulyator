@@ -17,11 +17,11 @@ class Button extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: color??Colors.grey
+          color: color??Color(0xff1e2336),
         ),
         width: 100.w,
         height: 100.h,
-        child: Text(character, style: TextStyle(fontSize: 30,),
+        child: Text(character, style: TextStyle(fontSize: 30,color: Colors.white, fontWeight: FontWeight.bold),
       ),
     ));
   }
