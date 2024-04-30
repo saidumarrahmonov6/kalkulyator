@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kalkulyator/custom_button.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(ScreenUtilInit(
@@ -37,6 +38,39 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff1b1a28),
+        actions: [
+          InkWell(
+            onTap: (){
+              showDialog(context: context, builder: (context){return AlertDialog(
+                title: Text("Bog'lanish"),
+                actions: [
+                  Column(
+                    children: [
+                      Text("Dasturchi bilan bog'lanish uchun birini tanlang :"),
+                      TextButton(onPressed: ()async{
+                        final Uri launcherUri =
+                        Uri(scheme: 'https', path: "t.me/rahmonov_saidumar");
+                        await launchUrl(launcherUri);
+                        Navigator.pop(context);
+                      }, child: Text("t.me/rahmonov_saidumar")),
+                      MaterialButton(onPressed: ()async{
+                        final Uri launcherUri =
+                        Uri(scheme: 'tel', path: "+998932058133");
+                        await launchUrl(launcherUri);
+                      }, child: Text("+998932058133")),
+                      TextButton(onPressed: (){
+                        Navigator.pop(context);
+                      }, child: Text("Bekor qilish")),
+                    ],
+                  )
+                                  ],
+              );});
+            },
+              child: Icon(Icons.person, color: Colors.white,size: 30,)),
+        ],
+      ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(10),
